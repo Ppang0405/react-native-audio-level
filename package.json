@@ -36,7 +36,7 @@
     "android"
   ],
   "repository": "https://github.com/Ppang0405/react-native-audio-level",
-  "author": "JeremyOppa <jeremyoppa012@gmail.com> (https://github.com/Ppang0405/react-native-audio-level)",
+  "author": "JeremyOppa <jeremyoppa012@gmail.com> (https://github.com/Ppang0405)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/Ppang0405/react-native-audio-level/issues"
@@ -146,15 +146,6 @@
           "project": "tsconfig.build.json"
         }
       ]
-    ]
-  },
-  "codegenConfig": {
-    "libraries": [
-      {
-        "name": "RNAudioLevelSpec",
-        "type": "modules",
-        "jsSrcsDir": "src"
-      }
     ]
   }
 }

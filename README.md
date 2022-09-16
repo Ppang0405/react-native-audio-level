@@ -1,5 +1,5 @@
 # react-native-audio-level
-fetch the audio level of environment in react native
+react native packge to fetch sound environment around.
 ## Installation
 
 ```sh

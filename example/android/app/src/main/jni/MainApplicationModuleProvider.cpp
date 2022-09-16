@@ -1,7 +1,6 @@
 #include "MainApplicationModuleProvider.h"
 
 #include <rncore.h>
-#include <AudioLevel.h>
 
 namespace facebook {
 namespace react {
@@ -19,11 +18,6 @@ std::shared_ptr<TurboModule> MainApplicationModuleProvider(
   // }
   // return rncore_ModuleProvider(moduleName, params);
 
-  auto module = AudioLevel_ModuleProvider(moduleName, params);
-
-  if (module != nullptr) {
-    return module;
-  }
 
   return rncore_ModuleProvider(moduleName, params);
 }

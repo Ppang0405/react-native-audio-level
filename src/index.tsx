@@ -6,16 +6,7 @@ const LINKING_ERROR =
   '- You rebuilt the app after installing the package\n' +
   '- You are not using Expo managed workflow\n';
 
-// @ts-expect-error
-const isTurboModuleEnabled = global.__turboModuleProxy != null;
-
-const AudioLevelModule = isTurboModuleEnabled
-  ? require('./NativeAudioLevel').default
-  : NativeModules.AudioLevel;
-
-const AudioLevel = AudioLevelModule
-  ? AudioLevelModule
-  : new Proxy(
+const AudioLevel = NativeModules.AudioLevel  ? NativeModules.AudioLevel  : new Proxy(
       {},
       {
         get() {
