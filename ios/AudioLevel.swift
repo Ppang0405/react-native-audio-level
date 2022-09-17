@@ -4,7 +4,8 @@ class AudioLevel: NSObject {
   var recorder: AVAudioRecorder!
   var levelTimer = Timer()
 
-  let LEVEL_THRESHOLD: Float = -10.0
+  let MAX_LEVEL_THRESHOLD: Float = -10.0
+  let MIN_LEVEL_THRESHOLD: Float = -10.0
 
   @objc(multiply:withB:withResolver:withRejecter:)
   func multiply(a: Float, b: Float, resolve:RCTPromiseResolveBlock,reject:RCTPromiseRejectBlock) -> Void {
@@ -19,7 +20,10 @@ class AudioLevel: NSObject {
 
   */
   func startFetchAudioLevel() {
-    let documents = URL(fileURLWithPath: NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0])
+    let documents = URL(fileURLWithPath: NSSearchPathForDirectoriesInDomains(
+      FileManager.SearchPathDirectory.documentDirectory,
+      FileManager.SearchPathDomainMask.userDomainMask,
+      true)[0])
     let url = documents.appendingPathComponent("record.caf")
 
     let recordSettings: [String: Any] = [
@@ -52,8 +56,11 @@ class AudioLevel: NSObject {
     recorder.updateMeters()
 
     let level = recorder.averagePower(forChannel: 0)
-    let isLoud = level > LEVEL_THRESHOLD
+    let isLoud = level > MAX_LEVEL_THRESHOLD
+    let isLow = level < MIN_LEVEL_THRESHOLD
 
     // do whatever you want with isLoud
+    // TODO: throw the level to JS via event listener
+
     }
 }
